@@ -1,0 +1,246 @@
+
+html {
+  font: normal normal 16px/1.2 Helvetica, sans-serif; 
+}
+
+body {
+   /* background-color: $body-white; */
+   position:relative;
+   margin: 0 auto;
+}
+
+
+
+header {
+   border-bottom: 0.06rem dashed lightblue;
+   margin-bottom: .11rem;
+ }
+
+/* 
+main {
+  border-right: 0.05rem dashed lightgray;
+  border-left: 0.05rem dashed lightgray;
+
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+} */
+
+/* 
+footer {
+  margin-top: 1rem;
+  font: 100 normal .7rem Quicksand sans-serif;
+  text-align: center;
+
+  border-top: 0.06rem dashed lightblue;
+
+  .page-design {
+    font-size: .7rem;
+    line-height: .7rem;
+  }
+
+  p {
+
+  }
+} */
+
+h2 {
+  /* font: $h2-font; */
+  /* color: $black; */
+
+  line-height: 1rem;
+
+  padding: 0 0;
+}
+
+
+p {
+  font: bold normal 1rem Quicksand, sans-serif;
+  color: #584;
+
+  line-height: 1rem;
+
+  padding: 0 0;
+}
+
+.body-chart-data {
+    /* position: relative; */
+    width: 100%;
+}
+.page-setting {
+    width: 80%;
+    /* width: 50rem; */
+    margin: 1rem auto;
+
+    border: .05rem #84a solid;
+    border-radius: .2rem;
+
+    position: relative;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+
+.main {
+  /* width: 70rem; */
+  margin: 0 auto;
+  border-right: 0.05rem dashed lightgray;
+  border-left: 0.05rem dashed lightgray;
+
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type="submit"] {
+    padding: .4rem;
+    width: 9rem;
+
+    font-size: 1.0rem;
+    color: white;
+
+    /* background-color: $button-bgnd-color; */
+
+    /* border: 1px solid $button-bgnd-color; */
+    border-radius: .3rem;
+}
+
+
+.btn {
+  /* height: $historic-data-button-dimension; */
+  /* width: $historic-data-button-dimension; */
+  margin: 0 auto;
+
+  padding: 0 0;
+
+  font-size: 80%;
+  color: black;
+
+  border-radius: .3rem;
+  transition: all 2s ease;
+}
+
+
+.pressed {
+  background: #e5daa2;
+  transform: scale(1.2) rotate(360deg);
+}
+
+
+#primary-content {
+   font: bold normal 5rem Poiret One, Quicksand, sans-serif;
+   color: #aaa584;
+   text-align: center;
+ }
+
+
+
+.company-info {
+  width: 70%;
+  /* height: $chart-header-height; */
+
+  padding-left: 5rem;
+  line-height: 1rem;
+
+  align-items: flex-end;
+  align-content: flex-end;
+
+  /* h2 {
+    font: 900 normal 2rem Quicksand, sans-serif;
+    color: blue;
+  } */
+}
+
+
+
+.company-stock-info {
+    width: 20%;
+    /* height: $chart-header-height; */
+
+    padding-left: 1.2rem;
+
+    line-height: 1rem;
+
+    border-right: .1rem solid lightgray;
+}
+
+.stock-market-chart-display {
+    width: 100%;
+    height: 29.3rem;
+
+    margin-top: 1rem;
+
+    border: .05rem #84a solid;
+    border-radius: .2rem;
+}
+
+
+.stock-ticker-input {
+    width: 8rem;
+    height: 1.8rem;
+
+    padding: 0  .4rem;
+
+    border: 0.09rem lightgray solid;
+    border-radius: .25rem;
+
+    text-align: left;
+}
+
+.stock-selector {
+    width: 55%;
+
+    padding: 1rem 0 .4rem ;
+
+    position: relative;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+
+
+.historical-data-group {
+    /* width: $full-width; */
+    height: 2rem;
+
+    /* margin: $margin-stock-ticker; */
+}
+
+
+footer {
+  margin-top: 1rem;
+  border-top: 0.1rem solid slateblue;
+}
+
+footer p {
+  font: bold normal .7rem Quicksand sans-serif;
+  text-align: center;
+  line-height: .7rem;
+  color: black;
+}
+
+.page-header {
+  border-bottom: 0.1rem solid slateblue;
+  margin-bottom: .11rem;
+}
+
+
+#primary-content {
+  font: bold normal 3rem Poiret One, Quicksand, sans-serif;
+  color: #aaa584;
+  text-align: center;
+
+  /* &::first-letter {
+    font-size: 6rem;
+  } */
+}
