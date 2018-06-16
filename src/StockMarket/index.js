@@ -31,6 +31,7 @@ class StockMarket extends Component {
               },
             
             mystocks: [{name:'', data:[]}],
+            stockMetData: [{}],
             // chartData: [],
             stock_activity_date: null,
             real_date_time: null,
@@ -243,26 +244,8 @@ class StockMarket extends Component {
             <div>
                 {this.state.loading ? <p>Loading ...</p> : null}
                 {this.state.error ? <p>{this.state.error}</p> : null}
-                {/* {stockData} */}
-                
-                {/* <p>My Companies</p> */}
                 {stockTicker}
-                 {/* <div className="page-setting">
-                        <div className="stock-market-chart-display">
-                            <Chart
-                                chartType="AreaChart"
-                                data={this.state.chartData}
-                                options={this.state.options}
-                                // graph_id="AreaChart"
-                                width="100%"
-                                height="365"
-                                legend_toggle
-                            />
-                    </div>
-                  </div> */}
             </div>
-
-
         );
     }
 }
