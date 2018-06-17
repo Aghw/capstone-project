@@ -7,7 +7,7 @@ class StockMarket extends Component {
         this.state =  {
             myCompanies: ['GOOG', 'FB', 'AMZN'],
             options: {
-                title: 'Company Stock Performance',
+                // title: 'Company Stock Performance',
                 legend: 'none',
                 backgroundColor: '#fde6de',
                 // chartArea: {left:60,top:20,width:'90%',height:'82%'},
@@ -30,13 +30,14 @@ class StockMarket extends Component {
                   },
               },
             
-            mystocks: [{name:'', data:[]}],
+            mystocks: [{ company_name:'', ticker:'',  data:[]}],
             stockMetData: [{}],
             // chartData: [],
             stock_activity_date: null,
             real_date_time: null,
             series_status: '1D',
             sample_interval: 5,
+            companyName: null,
             stock_data: {},
             months: ["Jan","Jan", "Feb", "Mar", "Apr", "May", 
                         "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
@@ -69,22 +70,29 @@ class StockMarket extends Component {
             fetch(market_url)
             .then(response => response.json())
             .then(data => {
-            // console.log(data);
-            // console.log(data["Meta Data"]["2. Symbol"]);
-            let chartData = this.findStockData(data);
-            //   var stockPerform = this.processStockData(data);
-            //   console.log("Stock-Performance: ", stockPerform);
-            mystocks.push({name: e, data: chartData});
+                console.log("Company stock data: ", data);
+                // console.log(data["Meta Data"]["2. Symbol"]);
+                let chartData = this.findStockData(data);
+                //   var stockPerform = this.processStockData(data);
+                //   console.log("Stock-Performance: ", stockPerform);
+                let comp_name = this.getStockMetaData(e);
+                console.log("The new company name is:", comp_name);
+                console.log("Checking company name: ", this.state.companyName);
+                mystocks.push({ company_name: comp_name, ticker: e, data: chartData});
 
-            this.setState((prevState, props) => {
-                return { 
-                    // chartData: stockPerform,
-                    mystocks: mystocks,
-                    loading: false
-                };
-            });
+                this.setState(() => {
+                    return { 
+                       
+                        // chartData: stockPerform,
+                        mystocks: mystocks,
+                        loading: false
+                    };
+                });
 
-            // console.log("Chart Data is: ", this.state.chartData);
+                
+
+                // console.log("Chart Data is: ", this.state.chartData);
+                
             })
             .catch(error => {
                 console.log(error)
@@ -97,6 +105,63 @@ class StockMarket extends Component {
             });
             // .catch(error => console.log(error));
         });
+
+        // find company metadata
+        // this.getStockMetaData();
+    }
+
+
+    getStockMetaData = (ticker) => {
+        let comp_name = '';
+        var quandl_api = "89wdkfPK7YciSxS7kDaZ";
+        // var quandl = "https://www.quandl.com/api/v3/datasets/EOD/AAPL.json?api_key=89wdkfPK7YciSxS7kDaZ";
+        var quandl = "https://www.quandl.com/api/v3/datasets/EOD/";
+        // var quandl_url = "https://cors-anywhere.herokuapp.com/" + quandl;
+        var quandl_metadata = 'https://www.quandl.com/api/v3/datasets/WIKI/';
+        var quandl_url = "https://cors-anywhere.herokuapp.com/" + quandl_metadata;
+        // var stockTicker = "GS"
+        // var market_url = quandl_url + stockTicker + "/metadata.json?api_key=" + quandl_api;
+        var market_url = `https://www.quandl.com/api/v3/datasets/WIKI/${ticker}/metadata.json?api_key=${quandl_api}`;
+        fetch(market_url)
+        .then(response => response.json())
+        .then(data => {
+            console.log("Company Metadata: ", data);
+            let name = data.dataset.name;
+            console.log("Company Name: ", name)
+            name = name.split("Prices")[0];
+            console.log("Revised  Company name: ", name);
+            comp_name = name;
+
+            let stocks = this.state.mystocks;
+            for (var i=0; i < stocks.length; i++ )
+            {
+                if(stocks[i].ticker === ticker) 
+                {
+                    stocks[i].company_name = name;
+                }
+            }
+
+            this.setState(() => {
+                return{
+                    companyName: stocks
+                };
+            });
+
+            console.log("Re-Revised  Company name: ", comp_name);
+            return name;
+        })
+        .catch(error => {
+            console.log(error)
+            this.setState((prevState, props) => {
+            return {
+                loading: false,
+                error: 'Error when drawing google chart.'
+            };
+            })
+        });
+
+        console.log("Hello World Company name: ");
+        return comp_name;
     }
 
 
@@ -219,19 +284,30 @@ class StockMarket extends Component {
 
         const stockTicker = mystocks.map((e, indx) => 
         //  <p key={indx}>{e}</p>
-            <div className="page-setting" key={indx}>
-                {/* <div className="stock-market-chart-display"> */}
-                    <Chart
-                        chartType="AreaChart"
-                        data={e.data}
-                        options={this.state.options}
-                        // graph_id="AreaChart"
-                        width="100%"
-                        height="365"
-                        legend_toggle
-                        title="ABC"
-                    />
-                {/* </div> */}
+            <div className="stock-data" key={indx}>
+                <div className="chart-header">
+                    <div className="company-ticker-data">
+                        <h2 id="company-ticker">{e.ticker}</h2>
+                        <p id="activity-date">{this.state.stock_activity_date}</p>
+                    </div>
+                    <div className="company-stock-info">
+                        <h2>{e.name}</h2>
+                    </div>
+                </div>
+                <div className="page-setting">
+                    {/* <div className="stock-market-chart-display"> */}
+                        <Chart
+                            chartType="AreaChart"
+                            data={e.data}
+                            options={this.state.options}
+                            // graph_id="AreaChart"
+                            width="100%"
+                            height="365"
+                            legend_toggle
+                            title="ABC"
+                        />
+                    {/* </div> */}
+                </div>
             </div>
         );
 
@@ -244,6 +320,17 @@ class StockMarket extends Component {
             <div>
                 {this.state.loading ? <p>Loading ...</p> : null}
                 {this.state.error ? <p>{this.state.error}</p> : null}
+                <div className="search-stock-ticker">
+                    <div className="input-controls">
+                        <input className="form-control stock-ticker-input"
+                        type="text" name="stock-symbol" id="stock-ticker" 
+                        placeholder="Enter Stock Ticker" />
+                        <input type="submit" value="Add Stock Ticker" id="addStockTicker" 
+                        title="Click to add stock ticker to your collection" />
+                        <input type="submit" value="Remove Stock Ticker" id="removeStockTicker" 
+                        title="Click to remove stock ticker from your collection" />
+                    </div>
+                </div>
                 {stockTicker}
             </div>
         );

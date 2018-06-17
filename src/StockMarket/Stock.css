@@ -16,43 +16,13 @@ header {
    margin-bottom: .11rem;
  }
 
-/* 
-main {
-  border-right: 0.05rem dashed lightgray;
-  border-left: 0.05rem dashed lightgray;
 
-  display:flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-} */
-
-/* 
-footer {
-  margin-top: 1rem;
-  font: 100 normal .7rem Quicksand sans-serif;
-  text-align: center;
-
-  border-top: 0.06rem dashed lightblue;
-
-  .page-design {
-    font-size: .7rem;
-    line-height: .7rem;
-  }
-
-  p {
-
-  }
-} */
 
 h2 {
-  /* font: $h2-font; */
-  /* color: $black; */
-
   line-height: 1rem;
-
   padding: 0 0;
+  font: lighter normal 2rem Arial, sans-serif;
+  color: blue;
 }
 
 
@@ -69,11 +39,62 @@ p {
     /* position: relative; */
     width: 100%;
 }
-.page-setting {
-    width: 80%;
-    /* width: 50rem; */
-    margin: 1rem auto;
 
+.company-stock-info {
+  width: 70%;
+  height: 4rem;
+
+  line-height: 1rem;
+
+  align-items: flex-end;
+  align-content: flex-end;
+}
+
+
+.company-ticker-data {
+  width: 29.5%;
+  line-height: .1rem;
+  align-items: flex-end;
+  align-content: flex-end;
+  border-right: .1rem solid lightgray;
+}
+
+.company-ticker-data h2 {
+  color: black;
+}
+
+.chart-header {
+  width: 100%;
+
+  position: relative;
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+
+.stock-data {
+  width: 80%;
+  margin: .5rem auto;
+  margin-bottom: 3rem;
+
+  border: .05rem rgb(36, 33, 37) solid;
+  border-radius: .2rem;
+
+  position: relative;
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+
+.page-setting {
+    width: 100%;
     border: .05rem #84a solid;
     border-radius: .2rem;
 
@@ -86,9 +107,8 @@ p {
     align-items: center;
 }
 
-
+/* 
 .main {
-  /* width: 70rem; */
   margin: 0 auto;
   border-right: 0.05rem dashed lightgray;
   border-left: 0.05rem dashed lightgray;
@@ -98,7 +118,7 @@ p {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-}
+} */
 
 input[type="submit"] {
     padding: .4rem;
@@ -107,16 +127,17 @@ input[type="submit"] {
     font-size: 1.0rem;
     color: white;
 
-    /* background-color: $button-bgnd-color; */
+    background-color: #3D7FCF;
 
-    /* border: 1px solid $button-bgnd-color; */
+    border: 1px solid #3D7FCF;
     border-radius: .3rem;
+    
 }
 
-
+/* 
 .btn {
-  /* height: $historic-data-button-dimension; */
-  /* width: $historic-data-button-dimension; */
+  height: 2rem;
+  width: 2rem;
   margin: 0 auto;
 
   padding: 0 0;
@@ -126,51 +147,17 @@ input[type="submit"] {
 
   border-radius: .3rem;
   transition: all 2s ease;
-}
+} */
 
+#removeStockTicker {
+  width: 11rem;
+}
 
 .pressed {
   background: #e5daa2;
   transform: scale(1.2) rotate(360deg);
 }
 
-
-#primary-content {
-   font: bold normal 5rem Poiret One, Quicksand, sans-serif;
-   color: #aaa584;
-   text-align: center;
- }
-
-
-
-.company-info {
-  width: 70%;
-  /* height: $chart-header-height; */
-
-  padding-left: 5rem;
-  line-height: 1rem;
-
-  align-items: flex-end;
-  align-content: flex-end;
-
-  /* h2 {
-    font: 900 normal 2rem Quicksand, sans-serif;
-    color: blue;
-  } */
-}
-
-
-
-.company-stock-info {
-    width: 20%;
-    /* height: $chart-header-height; */
-
-    padding-left: 1.2rem;
-
-    line-height: 1rem;
-
-    border-right: .1rem solid lightgray;
-}
 
 .stock-market-chart-display {
     width: 100%;
@@ -195,7 +182,7 @@ input[type="submit"] {
     text-align: left;
 }
 
-.stock-selector {
+/* .stock-selector {
     width: 55%;
 
     padding: 1rem 0 .4rem ;
@@ -205,16 +192,40 @@ input[type="submit"] {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+} */
+
+
+.search-stock-ticker {
+  width: 80%;
+  margin: .5rem auto;
+  padding: 1rem auto;
+  padding: 1rem 0;
+
+  border: 0.1rem solid slateblue;
+
+  position: relative;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
 }
 
+.input-controls {
+  width: 40%;
+  position: relative;
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 
-
+/* 
 .historical-data-group {
-    /* width: $full-width; */
+    width: $full-width;
     height: 2rem;
 
-    /* margin: $margin-stock-ticker; */
-}
+    margin: $margin-stock-ticker;
+} */
 
 
 footer {
@@ -223,10 +234,10 @@ footer {
 }
 
 footer p {
-  font: bold normal .7rem Quicksand sans-serif;
+  font: normal normal 1rem Courier sans-serif;
   text-align: center;
   line-height: .7rem;
-  color: black;
+  color: rgb(19, 47, 124);
 }
 
 .page-header {
@@ -236,11 +247,8 @@ footer p {
 
 
 #primary-content {
-  font: bold normal 3rem Poiret One, Quicksand, sans-serif;
+  font: normal normal 3rem Impact, sans-serif;
   color: #aaa584;
   text-align: center;
 
-  /* &::first-letter {
-    font-size: 6rem;
-  } */
 }
